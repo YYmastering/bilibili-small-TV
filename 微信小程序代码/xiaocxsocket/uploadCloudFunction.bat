@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-1gdbk1er3f2e88f8 --n quickstartFunctions --r --project "C:\Users\ASUS\Desktop\xiaocxsocket" --report_first --report

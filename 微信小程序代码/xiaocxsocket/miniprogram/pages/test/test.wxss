@@ -1,0 +1,130 @@
+page{
+  background-color: #dadbd6;
+}
+.img{
+  width: 100%;
+}
+
+
+
+.top{
+  /* font-size: 40rpx; */
+  background-color: white;
+  border-bottom: 3rpx solid black;
+  height: 100rpx;
+  /* background-color: aqua; */
+  /* background-image: url("../../images/logo.jpg"); */
+  /* border-bottom: 2px solid red; */
+position: relative;
+  
+}
+.ming{
+  font-family:"仿宋";
+  position: absolute;
+top:22rpx;
+font-weight: 600;
+left:250rpx;
+font-size: 40rpx;
+/* background-color: aqua; */
+}
+.qing1{
+  font-size: 35rpx;
+  /* background-color: blueviolet; */
+  text-align: center;
+  padding-top: 20rpx;
+  
+  padding-bottom:20rpx;
+}
+.qing2{
+  border: 3rpx solid #c3c4be;
+  text-align: center;
+  width: 98%;
+  margin: 10rpx auto 20rpx auto;
+  font-size: 30rpx;
+  /* background-color: blue; */
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.btn{
+
+  /* background: ; */
+  border: 3rpx solid black;
+  border-radius: 50rpx;
+}
+.logo{
+  width: 100rpx;
+  margin:12rpx 50rpx 10rpx 30rpx ;
+}
+
+.c1,.c2,.c3,.c4{font-size: 35rpx;
+float: left;
+margin-left: 85rpx;
+  margin-top: 40rpx;
+   background-color: #a9a399;
+   width: 250rpx;
+   box-shadow: 0 0 15rpx #a9a399 ;
+   text-align: center;
+   height: 80rpx;
+   line-height: 80rpx;
+   border-radius: 40rpx;
+}
+.c5{
+  margin-left: 225rpx;
+  margin-top: 35rpx;
+  float: left;
+  background-color: #a9a399;
+  width: 300rpx;
+  box-shadow: 0 0 15rpx #a9a399 ;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+}
+.tit1{
+  background-color:#cecdc6;
+  border-radius: 10rpx;
+  width: 200rpx;
+  height: 60rpx;
+  margin-top: 20rpx;
+  margin-left: 500rpx;
+/* float: right; */
+  text-align: center;
+  line-height: 60rpx;
+}
+.tit2{
+  background-color:#00b26a;
+  border-radius: 10rpx;
+  width: 200rpx;
+  height: 60rpx;
+  color: white;
+  margin-top: 20rpx;
+  margin-left: 500rpx;
+/* float: right; */
+  text-align: center;
+  line-height: 60rpx;
+}
+.liuyan{
+  font-size: 35rpx;
+margin-top: 40rpx;
+text-align: center;
+}
+.liuyan2{
+  width: 90%;
+  /* background-color: #a8b1b8; */
+  margin: 30rpx auto;
+ font-size: 40rpx;
+  height: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  box-shadow: 0 0 15rpx #a8b1b8;
+}
+.ip2{
+  float: left;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  /* position: fixed; */
+  /* background-color: aqua; */
+  left: 30rpx;
+  top:540rpx;
+  font-size: 30rpx;
+}

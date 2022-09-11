@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <button bindtap="send"> 发射 UDP 服务 </button>
+</view> -->
+
+<!-- <view class="res_container"> 
+  {{udpResData}}
+</view> -->
+
+<view class="top">
+<image src="../../images/yy.jpg" class="logo" mode="widthFix"></image>
+<view class="ming">杨帅帅的天气站--小程序端</view>
+
+</view>
+
+
+<view>
+
+<image src="../../images/小电视预览图.jpg" class="img" mode="widthFix"></image>
+<view class="tit1" wx:if="{{sign==0}}">暂未连接</view>
+<view class="ip2" wx:if="{{sign==1}}">本机IP："{{ipzi2}}"</view>
+<view class="tit2" wx:if="{{sign==1}}">小电视在线</view>
+<form bindsubmit="udplink">
+<view wx:if="{{sign==0}}" class="qing1">小电视IP地址：</view>
+<input wx:if="{{sign==0}}" class="qing2" name="ip" type="text" placeholder="请输入ip地址" />
+<button wx:if="{{sign==0}}" form-type="submit" class="btn" style="width: 400rpx;">点击连接到小电视</button>
+</form>
+<view wx:if="{{sign==1}}" bindtap="chatime" class="c1">查看时间</view>
+<view wx:if="{{sign==1}}" bindtap="chawen" class="c2">查看当前气温</view>
+<view wx:if="{{sign==1}}" bindtap="chafore" class="c3">查看未来天气</view>
+<view wx:if="{{sign==1}}" bindtap="chaliu" class="c4">查看留言板</view>
+<view wx:if="{{sign==1}}" bindtap="chabili" class="c5">查看bilibili粉丝数</view>
+</view>
+
+<view class="liuyan" wx:if="{{sign==1}}">留言板（仅支持字母！）</view>
+<form bindsubmit="xly" wx:if="{{sign==1}}">
+<input class="liuyan2" placeholder="YY bilibili!!!" onchange="xieliuyan" name="ll"  type="text"/>
+</form>
