@@ -1,87 +1,60 @@
-﻿<h1 align="center">📺 Bilibili 小电视桌面天气站</h1>
+﻿<h1 align="center">📺 Bilibili Weather TV — ESP8266 + WeChat Mini Program</h1>
 <p align="center">
-  <b>ESP8266 × 微信小程序 × I<sup>2</sup>C OLED × 3D 打印外壳</b><br>
-  <i>融合电子电路设计、嵌入式编程与工业设计的跨学科创意项目</i><br>
-  <a href="https://blog.csdn.net/qq_56711871/article/details/126743426">项目原文（CSDN）</a>
+  <b>ESP8266 × WeChat Mini Program × I²C OLED × 3D-printed Enclosure</b><br>
+  <i>A cross-disciplinary build that blends embedded firmware, PCB design, and industrial design.</i>
 </p>
 
 <p align="center">
-  <img alt="build" src="https://img.shields.io/badge/build-passing-brightgreen">
-  <img alt="license" src="https://img.shields.io/badge/license-MIT-informational">
   <img alt="platform" src="https://img.shields.io/badge/platform-ESP8266-blue">
-  <img alt="ui" src="https://img.shields.io/badge/UI-OLED%200.96''-blueviolet">
+  <img alt="display"  src="https://img.shields.io/badge/display-OLED%200.96%22-purple">
+  <img alt="license"  src="https://img.shields.io/badge/license-MIT-informational">
 </p>
 
 ---
 
-> **功能概要**：联网获取天气与时间（NTP）、显示 B 站数据（播放/粉丝等）、支持微信小程序发送留言到屏幕显示；硬件含 USB/锂电双供电、充电与稳压电路；外壳由 SolidWorks 建模并可 3D 打印。
+## Overview (EN)
 
-<details>
-<summary><b>📑 目录（点击展开）</b></summary>
+This project is a desktop “Bilibili TV” powered by **ESP8266**.  
+It connects to Wi-Fi, synchronizes time via **NTP**, fetches **weather** and **Bilibili stats**, and supports **on-device message display** sent from a **WeChat Mini Program**.  
+The hardware integrates USB/Li-ion power management and a 0.96″ I²C OLED; the enclosure is modeled in SolidWorks and 3D-printed.
 
-- [✨ 特性](#-特性)
-- [📂 代码与资源结构](#-代码与资源结构)
-- [🛠️ 硬件设计概览](#️-硬件设计概览)
-- [⚙️ 固件与小程序](#️-固件与小程序)
-- [🚀 快速上手](#-快速上手)
-- [🧱 外壳与渲染](#-外壳与渲染)
-- [🔋 供电与电路](#-供电与电路)
-- [🧠 设计亮点](#-设计亮点)
-- [🗺️ 路线图](#️-路线图)
-- [📸 实物展示](#-实物展示)
-- [?? 致谢与参考](#-致谢与参考)
-- [📜 许可协议](#-许可协议)
-
-</details>
+### Key Features
+- 🌤️ Weather via HTTP/JSON; configurable city and units  
+- ⏰ Precise time using NTP with reconnect and fallback  
+- 📊 Bilibili stats (e.g., views/followers) display rotation  
+- 💬 Message board via UDP packets from the mini program  
+- 🔋 Power solution: USB + Li-ion with charging & 3.3 V regulation  
+- 🧱 SolidWorks enclosure; STEP export for easy modification
 
 ---
 
-## ✨ 特性
-- 🌤️ **天气显示**：调用天气 API，展示温度、概况与预报  
-- ⏰ **精准校时**：NTP 同步，断网重连与容错  
-- 📊 **B 站数据**：支持展示播放/粉丝等统计信息  
-- 💬 **留言板**：微信小程序通过 UDP 指令下发并显示  
-- 🔋 **供电鲁棒**：USB/锂电自动切换，充电/稳压集成  
-- 🧱 **工业设计**：SolidWorks 外壳建模，3D 打印装配
+## Gallery (EN)
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="assets/render.png" alt="Enclosure render" width="430"><br>
+        <sub>Enclosure render (SolidWorks)</sub>
+      </td>
+      <td align="center">
+        <img src="assets/schematic.png" alt="PCB schematic" width="430"><br>
+        <sub>Main schematic (power / ESP8266 / I²C)</sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="assets/pcb_real.jpg" alt="PCB real photo" width="430"><br>
+        <sub>Assembled PCB (real photo)</sub>
+      </td>
+      <td align="center">
+        <img src="assets/miniapp_ui.png" alt="WeChat mini program UI" width="430"><br>
+        <sub>WeChat Mini Program — send message / set device IP</sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
-## 📂 代码与资源结构
-```text
-/
-├─ README.md
-├─ firmware/                 # ESP8266 固件
-│  ├─ src/
-│  │  ├─ main.ino            # 主逻辑：联网/天气/B站/留言/OLED UI
-│  │  ├─ config.h            # WiFi、API Key、B 站 UID、显示参数
-│  │  └─ modules/            # HTTP/NTP/UDP/OLED/Parser 等模块
-│  └─ lib/                   # 第三方库（按需）
-├─ app/                      # 微信小程序
-│  ├─ pages/
-│  │  ├─ index/              # 控制台：设备 IP、留言输入、发送
-│  │  └─ about/
-│  └─ utils/udp.js           # UDP 通信封装
-├─ hardware/                 # 硬件设计文件
-│  ├─ schematic/             # 原理图（PDF/PNG 导出）
-│  ├─ pcb/                   # PCB 源文件（AD/KiCad）
-│  └─ bom_list.xlsx          # 物料清单（BOM）
-├─ model/                    # 外壳与结构件
-│  ├─ 3d_model.step          # STEP 导出（推荐）
-│  └─ renders/               # 渲染图
-└─ assets/                   # 项目截图、演示图
-   ├─ front.png
-   ├─ back.png
-   └─ device_real.jpg
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Repository Layout (EN)
